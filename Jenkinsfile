@@ -17,7 +17,7 @@ pipeline {
         stage('Database Check') {
             steps {
                 // Verifies your Log_monitor DB is ready before deploying
-                sh "sudo mysql -p'Shan@1998' Log_monitor -e 'SHOW TABLES;'"
+                sh "mysql -u shanmukha -p'Shan@9591' Log_monitor -e 'SHOW TABLES';"
             }
         }
 
@@ -36,7 +36,7 @@ pipeline {
                     environment: 'LocalWebLogic', // This will refer to your manual config
                     name: 'LogMonitorApp',
                     source: 'target/LogMonitorApp.war',
-                    targets: 'AdminServer'
+                    targets: 'MS1'
                 ])
             }
         }
