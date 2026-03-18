@@ -29,17 +29,19 @@ pipeline {
         }
 
         stage('Deploy to WebLogic') {
-            steps {
-                // Using the plugin via code bypasses the UI errors
-                step([$class: 'WeblogicDeploymentPlugin',
-                    taskName: 'DeployApp',
-                    environment: 'LocalWebLogic', // This will refer to your manual config
-                    name: 'LogMonitorApp',
-                    source: 'target/LogMonitorApp.war',
-                    targets: 'MS1'
-                ])
-            }
-        }
+    steps {
+        sh '''
+        $WL_HOME/server/bin/weblogic.Deployer \
+        -adminurl t3://localhost:7001 \
+        -username weblogic \
+        -password Shan@1998 \
+        -deploy \
+        -name LogMonitorApp \
+        -source target/LogMonitorApp.war \
+        -targets MS1,MS2
+        '''
     }
 }
 
+    }
+}
