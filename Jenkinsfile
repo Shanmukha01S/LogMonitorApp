@@ -32,7 +32,7 @@ pipeline {
     steps {
         sh '''
         export DOMAIN_HOME=/home/shanmukha/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain
-        source $DOMAIN_HOME/bin/setDomainEnv.sh
+        . $DOMAIN_HOME/bin/setDomainEnv.sh
 
         java weblogic.Deployer \
         -adminurl t3://localhost:7001 \
