@@ -40,7 +40,7 @@ pipeline {
         -password Shan@1998 \
         -deploy \
         -name LogMonitorApp \
-        -source target/LogMonitorApp.war \
+        -source ~/.jenkins/workspace/Logmonitor-CI-CD/target \
         -targets MS1,MS2
         '''
     }
