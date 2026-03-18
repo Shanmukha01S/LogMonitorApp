@@ -31,7 +31,10 @@ pipeline {
         stage('Deploy to WebLogic') {
     steps {
         sh '''
-        $WL_HOME/server/bin/weblogic.Deployer \
+        export DOMAIN_HOME=/home/shanmukha/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain
+        source $DOMAIN_HOME/bin/setDomainEnv.sh
+
+        java weblogic.Deployer \
         -adminurl t3://localhost:7001 \
         -username weblogic \
         -password Shan@1998 \
