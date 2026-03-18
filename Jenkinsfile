@@ -17,7 +17,7 @@ pipeline {
         stage('Database Check') {
             steps {
                 // Verifies your Log_monitor DB is ready before deploying
-                sh "mysql -u root -p'Shan@1998' Log_monitor -e 'SHOW TABLES;'"
+                sh "sudo mysql -p'Shan@1998' Log_monitor -e 'SHOW TABLES;'"
             }
         }
 
